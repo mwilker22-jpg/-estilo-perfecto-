@@ -1,0 +1,2083 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estilo Perfecto - Peluquería Premium</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800&family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #d4a574;
+            --secondary-color: #8a5a44;
+            --light-color: #f9f5f0;
+            --dark-color: #333333;
+            --accent-color: #c1915e;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --success-color: #4CAF50;
+            --error-color: #f44336;
+            --warning-color: #ff9800;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: var(--light-color);
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: var(--secondary-color);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header y Navegación */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+        }
+
+        header.scrolled {
+            padding: 5px 0;
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            transition: var(--transition);
+        }
+
+        header.scrolled .nav-container {
+            padding: 10px 0;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--secondary-color);
+            text-decoration: none;
+            position: relative;
+            z-index: 1001;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--primary-color);
+            position: relative;
+        }
+
+        .logo span::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), transparent);
+            bottom: -5px;
+            left: 0;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+
+        .logo:hover span::after {
+            transform: scaleX(1);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 35px;
+            position: relative;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 600;
+            transition: var(--transition);
+            padding: 5px 0;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 26px;
+            cursor: pointer;
+            color: var(--secondary-color);
+            transition: var(--transition);
+            z-index: 1001;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            text-align: center;
+            padding: 220px 20px 150px;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(212, 165, 116, 0.1), rgba(138, 90, 68, 0.1));
+            z-index: 0;
+            animation: gradientShift 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes gradientShift {
+            0% { transform: scale(1) rotate(0deg); }
+            100% { transform: scale(1.2) rotate(2deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            transform: translateY(30px);
+            opacity: 0;
+            animation: fadeUp 1s forwards 0.5s;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        @keyframes fadeUp {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            margin-bottom: 25px;
+            color: #fff;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            line-height: 1.2;
+            animation: titleGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes titleGlow {
+            0% { text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); }
+            100% { text-shadow: 0 5px 25px rgba(212, 165, 116, 0.5), 0 0 30px rgba(212, 165, 116, 0.3); }
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            max-width: 800px;
+            margin: 0 auto 40px;
+            opacity: 0.9;
+            animation: fadeIn 1s forwards 1s;
+            opacity: 0;
+            padding: 0 20px;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 0.9; }
+        }
+
+        /* Botón */
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: clamp(12px, 3vw, 16px) clamp(30px, 5vw, 45px);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            box-shadow: 0 10px 20px rgba(212, 165, 116, 0.3);
+            transform: perspective(500px) translateZ(0);
+            animation: pulse 2s infinite;
+            font-size: clamp(14px, 2vw, 16px);
+        }
+
+        @keyframes pulse {
+            0% { 
+                transform: perspective(500px) translateZ(0);
+                box-shadow: 0 10px 20px rgba(212, 165, 116, 0.3);
+            }
+            50% { 
+                transform: perspective(500px) translateZ(10px);
+                box-shadow: 0 15px 30px rgba(212, 165, 116, 0.5);
+            }
+            100% { 
+                transform: perspective(500px) translateZ(0);
+                box-shadow: 0 10px 20px rgba(212, 165, 116, 0.3);
+            }
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.7s ease;
+            z-index: -1;
+        }
+
+        .btn:hover {
+            transform: perspective(500px) translateZ(20px);
+            box-shadow: 0 20px 40px rgba(212, 165, 116, 0.6);
+            animation: none;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        /* Servicios */
+        .services {
+            padding: clamp(60px, 10vw, 140px) 0;
+            background-color: #fff;
+            position: relative;
+            width: 100%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: clamp(40px, 6vw, 80px);
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+            padding: 0 20px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: lineGrow 1.5s ease-out forwards;
+        }
+
+        @keyframes lineGrow {
+            0% { width: 0; }
+            100% { width: 70px; }
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+            gap: clamp(30px, 4vw, 50px);
+            perspective: 1000px;
+        }
+
+        .service-card {
+            text-align: center;
+            padding: clamp(30px, 4vw, 50px) clamp(20px, 3vw, 30px);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            background-color: #fff;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(212, 165, 116, 0.1);
+            opacity: 0;
+            transform: translateY(50px);
+            animation: cardAppear 0.6s forwards;
+        }
+
+        .service-card:nth-child(1) { animation-delay: 0.2s; }
+        .service-card:nth-child(2) { animation-delay: 0.4s; }
+        .service-card:nth-child(3) { animation-delay: 0.6s; }
+
+        @keyframes cardAppear {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .service-card:hover {
+            transform: translateY(-20px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            border-color: var(--primary-color);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(212, 165, 116, 0.05), transparent);
+            transform: translateY(100%);
+            transition: transform 0.6s ease;
+            z-index: 0;
+        }
+
+        .service-card:hover::before {
+            transform: translateY(0);
+        }
+
+        .service-icon {
+            font-size: clamp(50px, 8vw, 70px);
+            margin-bottom: 30px;
+            display: inline-block;
+            transition: var(--transition);
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            z-index: 1;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(5deg); }
+        }
+
+        .service-card:hover .service-icon {
+            animation: iconSpin 0.8s ease-out;
+        }
+
+        @keyframes iconSpin {
+            0% { transform: rotateY(0) scale(1); }
+            50% { transform: rotateY(180deg) scale(1.2); }
+            100% { transform: rotateY(360deg) scale(1); }
+        }
+
+        /* GALERÍA 3D INTERSTELLAR */
+        .gallery-3d-section {
+            padding: clamp(60px, 10vw, 140px) 0;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .gallery-3d-section .section-title h2 {
+            color: var(--primary-color);
+            text-shadow: 0 0 20px rgba(212, 165, 116, 0.5);
+        }
+
+        .gallery-3d-section .section-title p {
+            color: #aaa;
+            font-size: clamp(1rem, 2vw, 1.2rem);
+        }
+
+        /* Contenedor 3D */
+        .interstellar-box {
+            position: relative;
+            width: 100%;
+            height: clamp(250px, 50vw, 450px);
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            margin: clamp(40px, 6vw, 80px) auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box {
+            position: relative;
+            width: clamp(150px, 30vw, 200px);
+            height: clamp(150px, 30vw, 200px);
+            transform-style: preserve-3d;
+            animation: interstellarRotate 20s linear infinite;
+            transform-origin: center center;
+        }
+
+        @keyframes interstellarRotate {
+            0% {
+                transform: rotateY(0deg) rotateX(10deg);
+            }
+            100% {
+                transform: rotateY(360deg) rotateX(10deg);
+            }
+        }
+
+        .box span {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transform-origin: center;
+            transform-style: preserve-3d;
+            transform: rotateY(calc(var(--i) * 45deg)) translateZ(clamp(180px, 35vw, 300px));
+            filter: drop-shadow(0 0 10px rgba(212, 165, 116, 0.3));
+            transition: transform 0.5s ease, filter 0.5s ease;
+        }
+
+        .box span:hover {
+            transform: rotateY(calc(var(--i) * 45deg)) translateZ(clamp(200px, 38vw, 330px)) scale(1.1);
+            filter: drop-shadow(0 0 20px rgba(212, 165, 116, 0.6));
+            z-index: 100;
+        }
+
+        .box span img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+            border: 3px solid rgba(212, 165, 116, 0.3);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+            transition: all 0.5s ease;
+        }
+
+        .box span:hover img {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 40px rgba(212, 165, 116, 0.5);
+        }
+
+        /* HERO SLIDER DE INSPIRACIÓN */
+        .hero-slider-section {
+            padding: clamp(60px, 10vw, 140px) 0;
+            background: linear-gradient(135deg, #111111 0%, #222222 100%);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .hero-slider-section .section-title h2 {
+            color: white;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+        }
+
+        .hero-slider-section .section-title p {
+            color: #aaa;
+            font-size: clamp(1rem, 2vw, 1.2rem);
+        }
+
+        /* Contenedor principal del Hero Slider */
+        .hero-slider-container {
+            width: 100%;
+            height: clamp(400px, 70vh, 100vh);
+            position: relative;
+            overflow: hidden;
+            margin-top: clamp(20px, 4vw, 40px);
+        }
+
+        /* Capa Fondo */
+        .background-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .background-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease;
+            filter: blur(8px) brightness(0.7);
+        }
+
+        .background-slide.active {
+            opacity: 1;
+        }
+
+        .background-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Capa Slider */
+        .slider-layer {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 1200px;
+            height: 80%;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slide-card {
+            position: absolute;
+            width: clamp(200px, 30vw, 350px);
+            height: clamp(300px, 45vw, 500px);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            transform: translateX(100px) scale(0.8);
+            z-index: 1;
+        }
+
+        .slide-card.active {
+            opacity: 1;
+            transform: translateX(0) scale(1);
+            z-index: 3;
+        }
+
+        .slide-card.prev {
+            opacity: 0.7;
+            transform: translateX(-80%) scale(0.85);
+            z-index: 2;
+        }
+
+        .slide-card.next {
+            opacity: 0.7;
+            transform: translateX(80%) scale(0.85);
+            z-index: 2;
+        }
+
+        .slide-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1s ease;
+        }
+
+        .slide-card.active:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Overlay de texto */
+        .slide-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: clamp(20px, 3vw, 40px);
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+            color: white;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.5s ease 0.3s;
+        }
+
+        .slide-card.active .slide-overlay {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .slide-country {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(2rem, 5vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: white;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .slide-region {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(1.2rem, 2vw, 1.8rem);
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+            letter-spacing: 1px;
+        }
+
+        .slide-description {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+            line-height: 1.6;
+            opacity: 0.9;
+            max-width: 80%;
+        }
+
+        /* Botones de navegación */
+        .slider-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 clamp(20px, 3vw, 40px);
+            z-index: 4;
+        }
+
+        .nav-btn {
+            width: clamp(40px, 6vw, 60px);
+            height: clamp(40px, 6vw, 60px);
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            font-size: clamp(18px, 3vw, 24px);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: var(--primary-color);
+            transform: scale(1.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Indicadores */
+        .slider-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 4;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: var(--primary-color);
+            transform: scale(1.3);
+            box-shadow: 0 0 10px rgba(212, 165, 116, 0.5);
+        }
+
+        /* RESERVA DE CITAS - CON FUNCIONALIDAD COMPLETA */
+        .booking {
+            padding: clamp(60px, 10vw, 140px) 0;
+            background: linear-gradient(135deg, var(--secondary-color), #6a4533);
+            color: white;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .booking h2 {
+            color: white;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .booking-form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: slideUp 0.8s forwards 0.3s;
+        }
+
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .booking-form {
+            background-color: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
+            padding: clamp(30px, 4vw, 50px);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+            border: 2px solid rgba(255, 255, 255, 0.25);
+            transition: var(--transition);
+            width: 100%;
+        }
+
+        .booking-form:hover {
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 255, 255, 0.35);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            opacity: 0;
+            transform: translateX(-20px);
+            animation: fadeInRight 0.5s forwards;
+        }
+
+        .form-group:nth-child(1) { animation-delay: 0.5s; }
+        .form-group:nth-child(2) { animation-delay: 0.6s; }
+        .form-group:nth-child(3) { animation-delay: 0.7s; }
+        .form-group:nth-child(4) { animation-delay: 0.8s; }
+        .form-group:nth-child(5) { animation-delay: 0.9s; }
+
+        @keyframes fadeInRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.95);
+            font-size: clamp(14px, 2vw, 16px);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            font-family: 'Poppins', sans-serif;
+            background-color: rgba(255, 255, 255, 0.95);
+            transition: var(--transition);
+            font-size: clamp(14px, 2vw, 16px);
+            color: var(--dark-color);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(212, 165, 116, 0.4);
+            background-color: white;
+            transform: translateY(-3px);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+            gap: 20px;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+            max-height: 200px;
+        }
+
+        /* WhatsApp Botón Flotante */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            width: clamp(50px, 8vw, 70px);
+            height: clamp(50px, 8vw, 70px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(24px, 4vw, 34px);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+            z-index: 1000;
+            transition: var(--transition);
+            text-decoration: none;
+            animation: floatWhatsapp 3s ease-in-out infinite;
+        }
+
+        @keyframes floatWhatsapp {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(10deg); }
+        }
+
+        /* Loader para formulario */
+        .loader {
+            display: none;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid var(--primary-color);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Modal de confirmación */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, white, #f9f5f0);
+            padding: clamp(30px, 4vw, 50px);
+            border-radius: 20px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            transform: scale(0.9);
+            opacity: 0;
+            animation: modalAppear 0.5s forwards;
+            border: 3px solid var(--primary-color);
+        }
+
+        @keyframes modalAppear {
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .modal-content i {
+            font-size: 70px;
+            color: var(--success-color);
+            margin-bottom: 20px;
+            animation: bounce 1s;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-30px);}
+            60% {transform: translateY(-15px);}
+        }
+
+        .modal-content h3 {
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+            font-size: clamp(1.5rem, 3vw, 2rem);
+        }
+
+        .modal-content p {
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+
+        /* Iframe oculto para WhatsApp Web */
+        .whatsapp-iframe {
+            display: none;
+            position: fixed;
+            top: -1000px;
+            left: -1000px;
+            width: 1px;
+            height: 1px;
+            border: none;
+            z-index: -1000;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--dark-color), #222222);
+            color: #ddd;
+            padding: clamp(60px, 10vw, 100px) 0 clamp(30px, 5vw, 40px);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+            gap: clamp(30px, 5vw, 60px);
+            margin-bottom: clamp(30px, 5vw, 60px);
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-column {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.8s forwards;
+        }
+
+        .footer-column:nth-child(1) { animation-delay: 0.2s; }
+        .footer-column:nth-child(2) { animation-delay: 0.4s; }
+        .footer-column:nth-child(3) { animation-delay: 0.6s; }
+
+        .footer-column h3 {
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            font-size: clamp(1.3rem, 3vw, 1.6rem);
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-icons a::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            border-radius: 50%;
+            transform: scale(0);
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover::before {
+            transform: scale(1);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
+            position: relative;
+            z-index: 1;
+            opacity: 0.7;
+        }
+
+        /* RESPONSIVE COMPLETO */
+        @media (max-width: 1200px) {
+            .box {
+                transform: scale(0.8);
+            }
+            
+            .box span {
+                transform: rotateY(calc(var(--i) * 45deg)) translateZ(clamp(150px, 25vw, 250px));
+            }
+        }
+
+        @media (max-width: 992px) {
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background-color: rgba(255, 255, 255, 0.98);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                z-index: 1000;
+                transform: translateY(-100%);
+                transition: transform 0.5s ease;
+                padding: 20px;
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+                opacity: 0;
+                transform: translateY(20px);
+                transition: opacity 0.5s ease, transform 0.5s ease;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .nav-links.active li {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            
+            .nav-links a {
+                font-size: 1.5rem;
+                display: block;
+                padding: 15px;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .box {
+                transform: scale(0.6);
+            }
+            
+            .slide-card.prev {
+                transform: translateX(-70%) scale(0.85);
+            }
+            
+            .slide-card.next {
+                transform: translateX(70%) scale(0.85);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 150px 20px 80px;
+                background-attachment: scroll;
+            }
+            
+            .box {
+                transform: scale(0.5);
+            }
+            
+            .box span {
+                transform: rotateY(calc(var(--i) * 45deg)) translateZ(clamp(120px, 20vw, 180px));
+            }
+            
+            .hero-slider-container {
+                height: clamp(350px, 60vh, 70vh);
+            }
+            
+            .slider-layer {
+                width: 95%;
+                height: 85%;
+            }
+            
+            .slide-description {
+                max-width: 90%;
+            }
+            
+            .slider-nav {
+                padding: 0 15px;
+            }
+            
+            .whatsapp-float {
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .booking-form {
+                padding: 25px 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .box {
+                transform: scale(0.4);
+            }
+            
+            .box span {
+                transform: rotateY(calc(var(--i) * 45deg)) translateZ(clamp(100px, 15vw, 150px));
+            }
+            
+            .hero-slider-container {
+                height: clamp(300px, 50vh, 60vh);
+            }
+            
+            .slide-card {
+                width: clamp(180px, 25vw, 200px);
+                height: clamp(250px, 35vw, 300px);
+            }
+            
+            .slide-overlay {
+                padding: 15px;
+            }
+            
+            .slider-dots {
+                bottom: 15px;
+            }
+            
+            .whatsapp-float {
+                bottom: 15px;
+                right: 15px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .social-icons {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 375px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .logo {
+                font-size: 24px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .box {
+                transform: scale(0.35);
+            }
+        }
+
+        /* Mejoras de accesibilidad y touch */
+        @media (hover: none) and (pointer: coarse) {
+            .service-card:hover {
+                transform: translateY(0) scale(1);
+            }
+            
+            .btn:hover {
+                transform: perspective(500px) translateZ(0);
+            }
+            
+            .nav-btn:hover {
+                transform: scale(1);
+            }
+            
+            .social-icons a:hover {
+                transform: none;
+            }
+            
+            /* Mejorar tamaño de elementos táctiles */
+            .form-group input,
+            .form-group select,
+            .form-group textarea {
+                padding: 18px 20px;
+                font-size: 16px;
+            }
+            
+            .btn {
+                min-height: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+
+        /* Optimización para tablets */
+        @media (min-width: 768px) and (max-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .service-card:nth-child(3) {
+                grid-column: span 2;
+                max-width: 500px;
+                justify-self: center;
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-column:last-child {
+                grid-column: span 2;
+                max-width: 500px;
+                justify-self: center;
+            }
+        }
+
+        /* Mejoras de impresión */
+        @media print {
+            .whatsapp-float,
+            .slider-nav,
+            .menu-toggle {
+                display: none !important;
+            }
+            
+            .hero {
+                background: white !important;
+                color: black !important;
+                padding: 50px 20px !important;
+            }
+            
+            .hero h1 {
+                color: black !important;
+                text-shadow: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- WhatsApp Botón Flotante -->
+    <a href="https://wa.me/584125919009?text=Hola,%20quiero%20información%20sobre%20sus%20servicios" 
+       class="whatsapp-float" 
+       target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Header y Navegación -->
+    <header id="header">
+        <div class="container nav-container">
+            <a href="#" class="logo">Estilo<span>Perfecto</span></a>
+            <div class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#galeria3d">Galería 3D</a></li>
+                <li><a href="#hero-slider">Inspiración</a></li>
+                <li><a href="#citas">Reservar Cita</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="hero-content container">
+            <h1>Transformamos tu look, realzamos tu belleza</h1>
+            <p>En Estilo Perfecto combinamos técnicas modernas con un toque personalizado para que luzcas espectacular en cada ocasión. Experimenta la excelencia en peluquería.</p>
+            <a href="#citas" class="btn">Reservar Cita Ahora</a>
+        </div>
+    </section>
+
+    <!-- Servicios -->
+    <section class="services" id="servicios">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestros Servicios</h2>
+                <p>Ofrecemos una amplia gama de servicios de peluquería para hombres y mujeres</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-cut"></i>
+                    </div>
+                    <h3>Cortes de Pelo</h3>
+                    <p>Cortes modernos y clásicos adaptados a tu rostro y personalidad. Nuestros estilistas te asesorarán para encontrar el look perfecto.</p>
+                    <div class="price">Desde $25</div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3>Coloración Premium</h3>
+                    <p>Desde mechas y reflejos hasta cambios de color completos. Utilizamos productos de la más alta calidad para proteger tu cabello.</p>
+                    <div class="price">Desde $50</div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-air-freshener"></i>
+                    </div>
+                    <h3>Tratamientos Especiales</h3>
+                    <p>Hidratación, keratina, alisados y más. Recupera la salud y brillo de tu cabello con nuestros tratamientos especializados.</p>
+                    <div class="price">Desde $40</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERÍA 3D INTERSTELLAR -->
+    <section class="gallery-3d-section" id="galeria3d">
+        <div class="container">
+            <div class="section-title">
+                <h2>Galería 3D </h2>
+                <p>Nuestros trabajos más destacados en un espectacular carrusel 3D</p>
+            </div>
+            
+            <div class="interstellar-box">
+                <!-- Contenedor principal del carrusel 3D -->
+                <div class="box" id="interstellarCarousel">
+                    <span style="--i:1;">
+                        <img src="cristiano.jpg" alt="Corte de pelo moderno">
+                    </span>
+                    <span style="--i:2;">
+                        <img src="ronaldo.jpg" alt="Coloración profesional">
+                    </span>
+                    <span style="--i:3;">
+                        <img src="combo-5.jpg" alt="Tratamiento capilar">
+                    </span>
+                    <span style="--i:4;">
+                        <img src="tijera.jpg" alt="Peinado para evento">
+                    </span>
+                    <span style="--i:5;">
+                        <img src="messi.jpg" alt="Estilista profesional">
+                    </span>
+                    <span style="--i:6;">
+                        <img src="logo.jpeg" alt="Barbería moderna">
+                    </span>
+                    <span style="--i:7;">
+                        <img src="images.jpg" alt="Corte masculino">
+                    </span>
+                    <span style="--i:8;">
+                        <img src="logo.jpeg" alt="Maquillaje profesional">
+                    </span>
+                </div>
+            </div>
+            
+            <div style="display: flex; justify-content: center; gap: 20px; margin-top: 40px; flex-wrap: wrap;">
+                <button class="btn" onclick="pauseRotation()" style="padding: 12px 30px;">⏸️ Pausar Rotación</button>
+                <button class="btn" onclick="resumeRotation()" style="padding: 12px 30px;">▶️ Reanudar Rotación</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- HERO SLIDER DE INSPIRACIÓN -->
+    <section class="hero-slider-section" id="hero-slider">
+        <div class="container">
+            <div class="section-title">
+                <h2>Inspiración & Estilo</h2>
+                <p>Descubre la belleza en cada detalle, inspirada en los lugares más extraordinarios del mundo</p>
+            </div>
+        </div>
+        
+        <div class="hero-slider-container">
+            <!-- Capa Fondo -->
+            <div class="background-layer" id="backgroundLayer"></div>
+            
+            <!-- Capa Slider -->
+            <div class="slider-layer">
+                <!-- Las tarjetas se generarán dinámicamente con JavaScript -->
+            </div>
+            
+            <!-- Botones de navegación -->
+            <div class="slider-nav">
+                <button class="nav-btn prev-btn">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="nav-btn next-btn">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            
+            <!-- Indicadores -->
+            <div class="slider-dots" id="sliderDots"></div>
+        </div>
+    </section>
+
+    <!-- RESERVA DE CITAS - CON FUNCIONALIDAD COMPLETA -->
+    <section class="booking" id="citas">
+        <div class="container">
+            <div class="section-title">
+                <h2>Reserva tu Cita</h2>
+                <p>Programa una cita con nuestros especialistas</p>
+            </div>
+            
+            <div class="booking-form-container">
+                <form class="booking-form" id="appointmentForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Nombre completo *</label>
+                            <input type="text" id="name" required placeholder="Ingresa tu nombre completo">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Teléfono *</label>
+                            <input type="tel" id="phone" required placeholder="Ej: 0412-7680533">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Correo electrónico</label>
+                            <input type="email" id="email" placeholder="tucorreo@ejemplo.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Servicio *</label>
+                            <select id="service" required>
+                                <option value="">Selecciona un servicio</option>
+                                <option value="Corte de pelo">Corte de pelo</option>
+                                <option value="Coloración">Coloración</option>
+                                <option value="Tratamiento capilar">Tratamiento capilar</option>
+                                <option value="Peinado para evento">Peinado para evento</option>
+                                <option value="Servicio de barbería">Servicio de barbería</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="date">Fecha preferida *</label>
+                            <input type="date" id="date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="time">Hora preferida *</label>
+                            <select id="time" required>
+                                <option value="">Selecciona una hora</option>
+                                <option value="9:00">9:00 AM</option>
+                                <option value="10:30">10:30 AM</option>
+                                <option value="12:00">12:00 PM</option>
+                                <option value="14:00">2:00 PM</option>
+                                <option value="15:30">3:30 PM</option>
+                                <option value="17:00">5:00 PM</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Mensaje adicional (opcional)</label>
+                        <textarea id="message" rows="4" placeholder="¿Alguna preferencia especial o detalle que debamos conocer?"></textarea>
+                    </div>
+                    
+                    <!-- Loader para envío -->
+                    <div class="loader" id="formLoader"></div>
+                    
+                    <button type="submit" class="btn" id="submitBtn" style="width: 100%; padding: 18px;">
+                        <span id="btnText">📅 Reservar Cita</span>
+                    </button>
+                    
+                    <!-- Mensaje de respuesta -->
+                    <p id="formMessage" style="margin-top: 20px; text-align: center; display: none; padding: 15px; border-radius: 10px;"></p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contacto">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Estilo Perfecto</h3>
+                    <p>Transformamos tu look, realzamos tu belleza. Somos tu peluquería de confianza con más de 15 años de experiencia.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="https://wa.me/584127680533" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Horario</h3>
+                    <ul>
+                        <li>Lunes - Viernes: 9:00 AM - 7:00 PM</li>
+                        <li>Sábados: 9:00 AM - 5:00 PM</li>
+                        <li>Domingos: 10:00 AM - 3:00 PM</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contacto</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Carretera principal callejon La Estrella</li>
+                        <li><i class="fas fa-phone"></i> 0412-7680533</li>
+                        <li><i class="fab fa-whatsapp"></i> 0412-7680533</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Estilo Perfecto - Peluquería Premium. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal de confirmación -->
+    <div class="modal" id="confirmationModal">
+        <div class="modal-content">
+            <i class="fas fa-check-circle"></i>
+            <h3>¡Reserva enviada exitosamente!</h3>
+            <p>Tu reserva ha sido procesada correctamente.</p>
+            <p>Hemos recibido tu solicitud y te contactaremos pronto para confirmar.</p>
+            <button class="btn" onclick="closeModal()" style="margin-top: 20px;">Aceptar</button>
+        </div>
+    </div>
+
+    <script>
+        // =================== CONFIGURACIÓN INICIAL ===================
+        // Menú móvil responsive
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        const navItems = document.querySelectorAll('.nav-links li');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuToggle.querySelector('i').classList.toggle('fa-bars');
+            menuToggle.querySelector('i').classList.toggle('fa-times');
+            
+            // Animar items del menú
+            if (navLinks.classList.contains('active')) {
+                navItems.forEach((item, index) => {
+                    item.style.transitionDelay = `${index * 0.1}s`;
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateY(0)';
+                });
+            } else {
+                navItems.forEach((item) => {
+                    item.style.transitionDelay = '0s';
+                    item.style.opacity = '0';
+                    item.style.transform = 'translateY(20px)';
+                });
+            }
+        });
+        
+        // Cerrar menú al hacer clic en un enlace
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuToggle.querySelector('i').classList.add('fa-bars');
+                menuToggle.querySelector('i').classList.remove('fa-times');
+            });
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Configurar fecha mínima en los formularios
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('date').min = today;
+        
+        // =================== FORMULARIO DE CITAS - MÉTODO DIRECTO ===================
+        const appointmentForm = document.getElementById('appointmentForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const btnText = document.getElementById('btnText');
+        const formLoader = document.getElementById('formLoader');
+        const formMessage = document.getElementById('formMessage');
+        
+        // MÉTODO DIRECTO A WHATSAPP (como en el primer archivo)
+        async function sendWhatsAppDirectly(appointmentData) {
+            return new Promise((resolve) => {
+                // Formatear el mensaje para WhatsApp
+                const message = `📅 *NUEVA RESERVA - ESTILO PERFECTO* 📅%0A%0A` +
+                               `👤 *Nombre:* ${encodeURIComponent(appointmentData.name)}%0A` +
+                               `📞 *Teléfono:* ${encodeURIComponent(appointmentData.phone)}%0A` +
+                               `${appointmentData.email ? `📧 *Email:* ${encodeURIComponent(appointmentData.email)}%0A` : ''}` +
+                               `✂️ *Servicio:* ${encodeURIComponent(appointmentData.service)}%0A` +
+                               `📅 *Fecha:* ${encodeURIComponent(formatDate(appointmentData.date))}%0A` +
+                               `⏰ *Hora:* ${encodeURIComponent(appointmentData.time)}%0A` +
+                               `${appointmentData.message ? `💬 *Mensaje:* ${encodeURIComponent(appointmentData.message)}%0A` : ''}%0A` +
+                               `---%0A` +
+                               `*Reserva realizada:* ${encodeURIComponent(formatDateTime(new Date()))}`;
+                
+                // Tu número de WhatsApp (formato internacional sin +)
+                const phoneNumber = '584125919009';
+                
+                // Crear URL para WhatsApp DIRECTO
+                const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+                
+                // Abrir WhatsApp directamente en nueva pestaña
+                window.open(whatsappUrl, '_blank');
+                
+                // Guardar la reserva localmente
+                saveAppointment(appointmentData);
+                
+                // Resolver como exitoso
+                resolve(true);
+            });
+        }
+        
+        // Función para formatear fecha (como en el primer archivo)
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('es-ES', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        }
+        
+        function formatDateTime(date) {
+            return date.toLocaleDateString('es-ES', {
+                day: 'numeric',
+                month: 'short',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+        }
+        
+        // Guardar reserva en localStorage (como en el primer archivo)
+        function saveAppointment(appointment) {
+            let appointments = JSON.parse(localStorage.getItem('estiloPerfectoAppointments')) || [];
+            
+            appointment.id = Date.now();
+            appointment.createdAt = new Date().toISOString();
+            appointment.status = 'pendiente';
+            
+            appointments.push(appointment);
+            localStorage.setItem('estiloPerfectoAppointments', JSON.stringify(appointments));
+            
+            console.log('Reserva guardada localmente:', appointment);
+        }
+        
+        // Evento submit del formulario - MÉTODO SIMPLIFICADO DIRECTO
+        appointmentForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Validar fecha
+            const selectedDate = new Date(document.getElementById('date').value);
+            const todayDate = new Date();
+            todayDate.setHours(0, 0, 0, 0);
+            
+            if (selectedDate < todayDate) {
+                showMessage('Por favor selecciona una fecha válida (no puede ser una fecha pasada)', 'error');
+                return;
+            }
+            
+            // Obtener datos del formulario
+            const appointmentData = {
+                name: document.getElementById('name').value.trim(),
+                phone: document.getElementById('phone').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                service: document.getElementById('service').value,
+                date: document.getElementById('date').value,
+                time: document.getElementById('time').value,
+                message: document.getElementById('message').value.trim(),
+                timestamp: new Date().toISOString()
+            };
+            
+            // Validar campos requeridos
+            if (!appointmentData.name || !appointmentData.phone || !appointmentData.service || !appointmentData.date || !appointmentData.time) {
+                showMessage('Por favor completa todos los campos requeridos (*)', 'error');
+                return;
+            }
+            
+            // Validar formato de teléfono
+            const phoneRegex = /^[0-9\s\-\+\(\)]{10,}$/;
+            if (!phoneRegex.test(appointmentData.phone)) {
+                showMessage('Por favor ingresa un número de teléfono válido (mínimo 10 dígitos)', 'error');
+                return;
+            }
+            
+            // Mostrar loader y deshabilitar botón
+            submitBtn.disabled = true;
+            btnText.textContent = 'Enviando...';
+            formLoader.style.display = 'block';
+            formMessage.style.display = 'none';
+            
+            try {
+                // **MÉTODO PRINCIPAL: Enviar directamente a WhatsApp (COMO EL PRIMER ARCHIVO)**
+                await sendWhatsAppDirectly(appointmentData);
+                
+                // Mostrar modal de confirmación
+                showModal();
+                
+                // Mostrar mensaje de éxito
+                showMessage('✅ Reserva procesada correctamente. Se abrió WhatsApp automáticamente.', 'success');
+                
+                // Limpiar formulario
+                appointmentForm.reset();
+                
+                // Restablecer fecha mínima
+                document.getElementById('date').min = new Date().toISOString().split('T')[0];
+                document.getElementById('date').value = new Date().toISOString().split('T')[0];
+                
+            } catch (error) {
+                console.error('Error:', error);
+                
+                // Si falla, crear mensaje manual
+                const manualMessage = `📅 *NUEVA RESERVA - ESTILO PERFECTO* 📅\n\n` +
+                                    `👤 Nombre: ${appointmentData.name}\n` +
+                                    `📞 Teléfono: ${appointmentData.phone}\n` +
+                                    `${appointmentData.email ? `📧 Email: ${appointmentData.email}\n` : ''}` +
+                                    `✂️ Servicio: ${appointmentData.service}\n` +
+                                    `📅 Fecha: ${formatDate(appointmentData.date)}\n` +
+                                    `⏰ Hora: ${appointmentData.time}\n` +
+                                    `${appointmentData.message ? `💬 Mensaje: ${appointmentData.message}\n` : ''}\n` +
+                                    `---\n` +
+                                    `Reserva realizada: ${new Date().toLocaleString('es-ES')}`;
+                
+                // Guardar igualmente la reserva
+                saveAppointment(appointmentData);
+                
+                // Mostrar modal con instrucciones manuales
+                showManualInstructions(manualMessage);
+                
+                showMessage('⚠️ Usa las instrucciones que aparecieron en pantalla', 'warning');
+                
+            } finally {
+                // Restaurar botón
+                submitBtn.disabled = false;
+                btnText.textContent = '📅 Reservar Cita';
+                formLoader.style.display = 'none';
+                formMessage.style.display = 'block';
+                
+                // Ocultar mensaje después de 5 segundos
+                setTimeout(() => {
+                    formMessage.style.display = 'none';
+                }, 5000);
+            }
+        });
+        
+        // Función para mostrar mensajes
+        function showMessage(text, type) {
+            formMessage.textContent = text;
+            formMessage.style.display = 'block';
+            
+            if (type === 'success') {
+                formMessage.style.backgroundColor = 'rgba(76, 175, 80, 0.2)';
+                formMessage.style.color = '#4CAF50';
+                formMessage.style.border = '1px solid #4CAF50';
+            } else if (type === 'warning') {
+                formMessage.style.backgroundColor = 'rgba(255, 152, 0, 0.2)';
+                formMessage.style.color = '#ff9800';
+                formMessage.style.border = '1px solid #ff9800';
+            } else {
+                formMessage.style.backgroundColor = 'rgba(244, 67, 54, 0.2)';
+                formMessage.style.color = '#f44336';
+                formMessage.style.border = '1px solid #f44336';
+            }
+        }
+        
+        // Mostrar instrucciones manuales para WhatsApp
+        function showManualInstructions(message) {
+            const manualModal = document.createElement('div');
+            manualModal.innerHTML = `
+                <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 3000; display: flex; justify-content: center; align-items: center; padding: 20px;">
+                    <div style="background: white; padding: 30px; border-radius: 15px; max-width: 500px; width: 100%; text-align: center; box-shadow: 0 20px 40px rgba(0,0,0,0.4);">
+                        <h3 style="color: #d4a574; margin-bottom: 15px; font-size: 1.5rem;">📱 Envía la reserva manualmente por WhatsApp</h3>
+                        <div style="background: #f9f5f0; padding: 20px; border-radius: 10px; margin: 20px 0; font-family: 'Courier New', monospace; text-align: left; white-space: pre-line; font-size: 14px; max-height: 300px; overflow-y: auto;">
+                            ${message}
+                        </div>
+                        <p style="margin: 15px 0; color: #333; font-size: 1rem;">
+                            <strong>Pasos a seguir:</strong><br>
+                            1. Copia el mensaje completo de arriba<br>
+                            2. Abre WhatsApp en tu teléfono<br>
+                            3. Envíalo al número: <strong style="color: #25D366;">0412-5919009</strong>
+                        </p>
+                        <button onclick="this.parentElement.parentElement.remove()" 
+                                style="background: #d4a574; color: white; border: none; padding: 12px 30px; border-radius: 25px; margin-top: 20px; cursor: pointer; font-weight: 600; font-size: 1rem; transition: all 0.3s;">
+                            ✅ Entendido, ya lo envié
+                        </button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(manualModal);
+        }
+        
+        // =================== GALERÍA 3D INTERSTELLAR ===================
+        // Controles para la galería 3D
+        const carousel = document.getElementById('interstellarCarousel');
+        let isPaused = false;
+        
+        function pauseRotation() {
+            carousel.style.animationPlayState = 'paused';
+            isPaused = true;
+            showMessage('⏸️ Rotación pausada', 'success');
+        }
+        
+        function resumeRotation() {
+            carousel.style.animationPlayState = 'running';
+            isPaused = false;
+            showMessage('▶️ Rotación reanudada', 'success');
+        }
+        
+        // =================== HERO SLIDER DE VIAJES ===================
+        // Datos del slider
+        const slidesData = [
+            {
+                pais: 'VNZL',
+                lugar: 'CAMBUR',
+                desc: 'Corte de Cabello Mohicano.',
+                img: '1.jpeg'
+            },
+            {
+                pais: 'VNZL',
+                lugar: 'CAMBUR',
+                desc: 'Corte de Cabello Med Fade.',
+                img: '2.jpeg'
+            },
+            {
+                pais: 'VNZL',
+                lugar: 'CAMBUR',
+                desc: 'Corte de Cabello El Mazamorra.',
+                img: '3.jpeg'
+            },
+            {
+                pais: 'VNZL',
+                lugar: 'CAMBUR',
+                desc: 'Corte de Cabello Burst Fade.',
+                img: '4.jpeg'
+            },
+            {
+                pais: 'VNZL',
+                lugar: 'CAMBUR',
+                desc: 'Corte de Cabello High fade.',
+                img: '5.jpeg'         
+            },
+        ];
+        
+        // Variables del slider
+        let currentSlide = 0;
+        let autoSlideInterval;
+        
+        // Inicializar el Hero Slider
+        function initHeroSlider() {
+            const backgroundLayer = document.getElementById('backgroundLayer');
+            const sliderLayer = document.querySelector('.slider-layer');
+            const sliderDots = document.getElementById('sliderDots');
+            
+            // Crear slides de fondo
+            slidesData.forEach((slide, index) => {
+                // Crear slide de fondo
+                const backgroundSlide = document.createElement('div');
+                backgroundSlide.className = `background-slide ${index === 0 ? 'active' : ''}`;
+                backgroundSlide.innerHTML = `<img src="${slide.img}" alt="${slide.pais}" loading="lazy">`;
+                backgroundLayer.appendChild(backgroundSlide);
+                
+                // Crear slide card
+                const slideCard = document.createElement('div');
+                slideCard.className = `slide-card ${index === 0 ? 'active' : 
+                                       index === slidesData.length - 1 ? 'prev' : 
+                                       index === 1 ? 'next' : ''}`;
+                slideCard.innerHTML = `
+                    <img src="${slide.img}" alt="${slide.pais}" loading="lazy">
+                    <div class="slide-overlay">
+                        <h2 class="slide-country">${slide.pais}</h2>
+                        <h3 class="slide-region">${slide.lugar}</h3>
+                        <p class="slide-description">${slide.desc}</p>
+                    </div>
+                `;
+                sliderLayer.appendChild(slideCard);
+                
+                // Crear dots
+                const dot = document.createElement('div');
+                dot.className = `dot ${index === 0 ? 'active' : ''}`;
+                dot.dataset.index = index;
+                dot.addEventListener('click', () => goToSlide(index));
+                sliderDots.appendChild(dot);
+            });
+            
+            // Configurar navegación
+            document.querySelector('.prev-btn').addEventListener('click', prevSlide);
+            document.querySelector('.next-btn').addEventListener('click', nextSlide);
+            
+            // Iniciar auto-slide
+            startAutoSlide();
+            
+            // Pausar auto-slide al interactuar
+            const sliderContainer = document.querySelector('.hero-slider-container');
+            sliderContainer.addEventListener('mouseenter', stopAutoSlide);
+            sliderContainer.addEventListener('mouseleave', startAutoSlide);
+            sliderContainer.addEventListener('touchstart', stopAutoSlide);
+            
+            // Navegación con teclado
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') prevSlide();
+                if (e.key === 'ArrowRight') nextSlide();
+            });
+        }
+        
+        // Funciones del slider
+        function goToSlide(index) {
+            const slides = document.querySelectorAll('.slide-card');
+            const backgroundSlides = document.querySelectorAll('.background-slide');
+            const dots = document.querySelectorAll('.dot');
+            
+            // Remover clases activas
+            slides.forEach(slide => slide.classList.remove('active', 'prev', 'next'));
+            backgroundSlides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            // Actualizar índice actual
+            currentSlide = index;
+            
+            // Aplicar nuevas clases
+            slides[index].classList.add('active');
+            backgroundSlides[index].classList.add('active');
+            dots[index].classList.add('active');
+            
+            // Calcular índices para prev y next
+            const prevIndex = (index - 1 + slidesData.length) % slidesData.length;
+            const nextIndex = (index + 1) % slidesData.length;
+            
+            slides[prevIndex].classList.add('prev');
+            slides[nextIndex].classList.add('next');
+        }
+        
+        function nextSlide() {
+            goToSlide((currentSlide + 1) % slidesData.length);
+        }
+        
+        function prevSlide() {
+            goToSlide((currentSlide - 1 + slidesData.length) % slidesData.length);
+        }
+        
+        function startAutoSlide() {
+            stopAutoSlide(); // Limpiar intervalo existente
+            autoSlideInterval = setInterval(nextSlide, 5000);
+        }
+        
+        function stopAutoSlide() {
+            if (autoSlideInterval) {
+                clearInterval(autoSlideInterval);
+            }
+        }
+        
+        // =================== FUNCIONES MODAL ===================
+        function showModal() {
+            document.getElementById('confirmationModal').style.display = 'flex';
+        }
+        
+        function closeModal() {
+            document.getElementById('confirmationModal').style.display = 'none';
+        }
+        
+        // Cerrar modal al hacer clic fuera
+        window.addEventListener('click', (e) => {
+            const modal = document.getElementById('confirmationModal');
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+        
+        // =================== INICIALIZACIÓN GENERAL ===================
+        window.addEventListener('DOMContentLoaded', () => {
+            // Configurar fecha
+            document.getElementById('date').min = today;
+            document.getElementById('date').value = today;
+            
+            // Validar teléfono en tiempo real (como en el primer archivo)
+            document.getElementById('phone').addEventListener('input', function(e) {
+                this.value = this.value.replace(/[^0-9+-\s]/g, '');
+            });
+            
+            // Inicializar Hero Slider
+            initHeroSlider();
+            
+            // Smooth scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if(targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        // Cerrar menú móvil si está abierto
+                        if (navLinks.classList.contains('active')) {
+                            navLinks.classList.remove('active');
+                            menuToggle.querySelector('i').classList.add('fa-bars');
+                            menuToggle.querySelector('i').classList.remove('fa-times');
+                        }
+                        
+                        // Scroll suave
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Responsive adicional
+            let resizeTimer;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(() => {
+                    if (window.innerWidth > 992 && navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        menuToggle.querySelector('i').classList.add('fa-bars');
+                        menuToggle.querySelector('i').classList.remove('fa-times');
+                    }
+                }, 250);
+            });
+        });
+    </script>
+</body>
+</html>
