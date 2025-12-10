@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estilo Perfecto | Barbería Premium</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Manrope:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <a href="https://wa.me/584127680533?text=Hola,%20quiero%20información%20sobre%20sus%20servicios" 
+       class="whatsapp-float" 
+       target="_blank"
+       aria-label="Contactar por WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <header id="header">
+        <div class="container nav-container">
+            <a href="#" class="logo">Estilo<span>Perfecto</span></a>
+            <div class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#galeria3d">Galería 3D</a></li>
+                <li><a href="#hero-slider">Estilos</a></li>
+                <li><a href="#citas" class="nav-btn-highlight">Reservar Cita</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="hero" id="inicio">
+        <div class="hero-overlay"></div>
+        <div class="hero-content container">
+            <span class="subtitle">Excelencia en cada corte</span>
+            <h1>Define tu Legado</h1>
+            <p>La combinación perfecta entre la barbería clásica y las tendencias modernas. Tu imagen es nuestra prioridad.</p>
+            <div class="hero-btns">
+                <a href="#citas" class="btn btn-primary">Reservar Ahora</a>
+                <a href="#servicios" class="btn btn-outline">Ver Servicios</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="services" id="servicios">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestros Servicios</h2>
+                <p>Maestría y precisión en cada detalle</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="card-icon">
+                        <i class="fas fa-cut"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Corte de Cabello</h3>
+                        <p>Asesoramiento de imagen y corte con técnicas de tijera y máquina para un acabado impecable.</p>
+                        <span class="price">$5.00</span>
+                    </div>
+                </div>
+
+                <div class="service-card featured">
+                    <div class="card-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Barba y Corte</h3>
+                        <p>El servicio ideal. Corte de cabello detallado más perfilado y tratamiento de barba con toalla caliente.</p>
+                        <span class="price">$8.00</span>
+                    </div>
+                </div>
+                
+                </div>
+        </div>
+    </section>
+
+    <section class="gallery-3d-section" id="galeria3d">
+        <div class="container">
+            <div class="section-title">
+                <h2>Galería Exclusiva</h2>
+                <p>Resultados reales de nuestros clientes</p>
+            </div>
+            
+            <div class="interstellar-box">
+                <div class="box" id="interstellarCarousel">
+                    <span style="--i:1;"><img src="messi.jpg" alt="Corte 1" onerror="this.style.display='none'"></span>
+                    <span style="--i:2;"><img src="ronaldo.jpg" alt="Corte 2" onerror="this.style.display='none'"></span>
+                    <span style="--i:3;"><img src="7.jpeg" alt="Corte 3" onerror="this.style.display='none'"></span>
+                    <span style="--i:4;"><img src="cristiano.jpg" alt="Corte 4" onerror="this.style.display='none'"></span>
+                    <span style="--i:5;"><img src="images.jpg" alt="Corte 5" onerror="this.style.display='none'"></span>
+                    <span style="--i:6;"><img src="4.jpeg" alt="Corte 6" onerror="this.style.display='none'"></span>
+                    <span style="--i:7;"><img src="1.jpeg" alt="Corte 7" onerror="this.style.display='none'"></span>
+                    <span style="--i:8;"><img src="2.jpeg" alt="Corte 8" onerror="this.style.display='none'"></span>
+                </div>
+            </div>
+            
+            <div class="gallery-controls">
+                <button class="btn-control" onclick="pauseRotation()"><i class="fas fa-pause"></i> Pausar</button>
+                <button class="btn-control" onclick="resumeRotation()"><i class="fas fa-play"></i> Rotar</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="hero-slider-section" id="hero-slider">
+        <div class="container-fluid">
+            <div class="section-title light">
+                <h2>Colección de Estilos</h2>
+                <p>Tendencias globales adaptadas a ti</p>
+            </div>
+        </div>
+        
+        <div class="hero-slider-container">
+            <div class="background-layer" id="backgroundLayer"></div>
+            <div class="slider-layer"></div>
+            
+            <div class="slider-nav">
+                <button class="nav-btn prev-btn"><i class="fas fa-arrow-left"></i></button>
+                <button class="nav-btn next-btn"><i class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <section class="booking" id="citas">
+        <div class="container">
+            <div class="booking-wrapper">
+                <div class="booking-info">
+                    <h2>Reserva tu Espacio</h2>
+                    <p>Tu tiempo es valioso. Agenda tu cita en segundos y asegura tu atención preferencial sin esperas.</p>
+                    <ul class="booking-features">
+                        <li><i class="fas fa-check-circle"></i> Confirmación inmediata vía WhatsApp</li>
+                        <li><i class="fas fa-check-circle"></i> Recordatorios de horarios</li>
+                        <li><i class="fas fa-check-circle"></i> Profesionales calificados</li>
+                    </ul>
+                </div>
+
+                <div class="booking-form-container">
+                    <form class="booking-form" id="appointmentForm">
+                        <div class="form-header">
+                            <h3>Datos de la Cita</h3>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Nombre completo</label>
+                                <div class="input-icon">
+                                    <i class="fas fa-user"></i>
+                                    <input type="text" id="name" required placeholder="Tu nombre">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Teléfono</label>
+                                <div class="input-icon">
+                                    <i class="fas fa-phone"></i>
+                                    <input type="tel" id="phone" required placeholder="0412-0000000">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="service">Servicio deseado</label>
+                            <div class="input-icon">
+                                <i class="fas fa-cut"></i>
+                                <select id="service" required>
+                                    <option value="">Seleccionar servicio...</option>
+                                    <option value="Corte de pelo">Corte de Cabello ($5)</option>
+                                    <option value="Barba y Corte">Barba y Corte ($8)</option>
+                                    </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="date">Fecha</label>
+                                <div class="input-icon">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <input type="date" id="date" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="time">Hora</label>
+                                <div class="input-icon">
+                                    <i class="fas fa-clock"></i>
+                                    <select id="time" required disabled>
+                                        <option value="">Elige fecha primero</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Nota especial (Opcional)</label>
+                            <textarea id="message" rows="3" placeholder="Ej: Tengo la piel sensible..."></textarea>
+                        </div>
+                        
+                        <div class="loader" id="formLoader"></div>
+                        
+                        <button type="submit" class="btn btn-block" id="submitBtn">
+                            <span id="btnText">CONFIRMAR RESERVA <i class="fab fa-whatsapp"></i></span>
+                        </button>
+                        
+                        <p id="formMessage"></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contacto">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo">Estilo<span>Perfecto</span></a>
+                    <p>Elevando el estándar de la barbería moderna. Un espacio diseñado para el caballero contemporáneo.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://wa.me/584127680533"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-info">
+                    <h3>Horarios de Atención</h3>
+                    <ul>
+                        <li><span>Lun - Vie:</span> 8:00 AM - 10:00 PM</li>
+                        <li><span>Sábados:</span> 9:00 AM - 10:00 PM</li>
+                        <li><span>Domingos:</span> 10:00 AM - 10:00 PM</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3>Ubicación</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Carretera principal, Callejon La Estrella</li>
+                        <li><i class="fas fa-phone-alt"></i> 0412-7680533</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 Estilo Perfecto. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="modal" id="confirmationModal">
+        <div class="modal-content">
+            <div class="modal-icon">
+                <i class="fas fa-check"></i>
+            </div>
+            <h3>¡Reserva Enviada!</h3>
+            <p>Se ha abierto WhatsApp para confirmar tu cita. <br>¡Gracias por preferirnos!</p>
+            <button class="btn btn-primary" onclick="closeModal()">Entendido</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
